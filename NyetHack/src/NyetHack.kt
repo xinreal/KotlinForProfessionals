@@ -1,15 +1,9 @@
+var heroName = ""
 fun main() {
-    narrate("The hero enters Kronstadt. What is their name?") { message ->
-        //yellow message
-        "\u001b[33;1m$message\u001b[0m"
-    }
-    val heroName = readlnOrNull()
-    require(!heroName.isNullOrEmpty()) {
-        "The hero must have a name!"
-    }
-
-    changeNarratorMood()
+    heroName = promptHeroName()
+    //changeNarratorMood()
     narrate("$heroName, ${createTitle(heroName)}, heads to the square")
+    visitTavern()
 }
 
 private fun createTitle(name: String): String {
@@ -22,4 +16,19 @@ private fun createTitle(name: String): String {
         name.lowercase() == name.reversed().lowercase() -> "Palindrome"
         else -> "The Renowned Hero"
     }
+}
+
+private fun promptHeroName(): String {
+    narrate("The hero enters Kronstadt. What is their name?") { message ->
+        //yellow message
+        "\u001b[33;1m$message\u001b[0m"
+    }
+    /*val heroName = readlnOrNull()
+    require(!heroName.isNullOrEmpty()) {
+        "The hero must have a name!"
+    }
+    return input
+     */
+    println("Ksenia")
+    return "Ksenia"
 }
